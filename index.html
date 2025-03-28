@@ -50,13 +50,19 @@
     </section>
 
     <section id="contacto">
-        <h2>Contacto</h2>
-        <form action="#" method="post">
-            <input type="text" name="nombre" placeholder="Tu Nombre" required>
-            <input type="email" name="email" placeholder="Tu Email" required>
-            <textarea name="mensaje" rows="5" placeholder="Tu Mensaje" required></textarea>
-            <button type="submit">Enviar</button>
-        </form>
+    <h2>Contacto</h2>
+    <form action="https://formspree.io/f/tu_codigo_formspree" method="POST">
+        <label for="nombre">Nombre:</label>
+        <input type="text" name="nombre" id="nombre" required>
+
+        <label for="email">Correo Electrónico:</label>
+        <input type="email" name="email" id="email" required>
+
+        <label for="mensaje">Mensaje:</label>
+        <textarea name="mensaje" id="mensaje" rows="4" required></textarea>
+
+        <button type="submit">Enviar</button>
+    </form>
     </section>
 
     <section id="sobre-nosotros">
