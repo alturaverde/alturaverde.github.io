@@ -39,3 +39,38 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     });
 });
+document.getElementById('contactForm').addEventListener('submit', function(event) {
+const nombre = document.getElementById('nombre').value;
+const email = document.getElementById('email').value;
+const mensaje = document.getElementById('mensaje').value;
+
+if (!nombre || !email || !mensaje) {
+    alert("Por favor, completa todos los campos.");
+    return;
+}
+
+if (!validateEmail(email)) {
+    alert("Por favor, ingresa un correo válido.");
+    return;
+}
+
+// Función para validar el formato del email
+function validateEmail(email) {
+    const re = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+    return re.test(email);
+}
+
+    event.preventDefault(); // Prevenir la acción predeterminada (no recargar página)
+
+    const form = this;
+    const successMessage = document.getElementById('successMessage');
+
+    // Mostrar mensaje de éxito
+    successMessage.style.display = 'block';
+    
+    // Ocultar el formulario
+    form.style.display = 'none';
+
+    // Aquí podemos también añadir una animación para que sea más suave
+    successMessage.classList.add('fade-in');
+});
