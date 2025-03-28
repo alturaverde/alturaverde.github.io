@@ -130,3 +130,138 @@ function validateEmail(email) {
     sliderTrack.addEventListener('touchmove', touchMove);
     sliderTrack.addEventListener('touchend', touchEnd);
 </script>
+function initSliderSwipe(sliderSelector) {
+    const sliderTrack = document.querySelector(`${sliderSelector} .slider-track`);
+    if (!sliderTrack) return;
+
+    let startX = 0, currentTranslate = 0, prevTranslate = 0, isDragging = false;
+
+    function setPosition() {
+        sliderTrack.style.transform = `translateX(${currentTranslate}px)`;
+    }
+
+    function touchStart(e) {
+        isDragging = true;
+        startX = e.touches[0].clientX;
+    }
+
+    function touchMove(e) {
+        if (!isDragging) return;
+        const currentX = e.touches[0].clientX;
+        currentTranslate = prevTranslate + currentX - startX;
+        setPosition();
+    }
+
+    function touchEnd() {
+        isDragging = false;
+        const slideWidth = sliderTrack.offsetWidth / sliderTrack.children.length;
+        const moved = currentTranslate - prevTranslate;
+        if (moved < -50) {
+            nextSlide();
+        } else if (moved > 50) {
+            prevSlide();
+        } else {
+            currentTranslate = prevTranslate;
+            setPosition();
+        }
+    }
+
+    function nextSlide() {
+        const slideWidth = sliderTrack.offsetWidth / sliderTrack.children.length;
+        if (prevTranslate > -slideWidth * (sliderTrack.children.length - 1)) {
+            prevTranslate -= slideWidth;
+            currentTranslate = prevTranslate;
+            setPosition();
+        }
+    }
+
+    function prevSlide() {
+        const slideWidth = sliderTrack.offsetWidth / sliderTrack.children.length;
+        if (prevTranslate < 0) {
+            prevTranslate += slideWidth;
+            currentTranslate = prevTranslate;
+            setPosition();
+        }
+    }
+
+    sliderTrack.addEventListener('touchstart', touchStart);
+    sliderTrack.addEventListener('touchmove', touchMove);
+    sliderTrack.addEventListener('touchend', touchEnd);
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    initSliderSwipe('#slider');  // <--- aquí indicás el ID del slider que quieras controlar
+});
+function initSliderSwipe(sliderSelector) {
+    const slider = document.querySelector(sliderSelector);
+    if (!slider) return;
+
+    const track = slider.querySelector('.slider-track');
+    const btnPrev = slider.querySelector('.btn-prev');
+    const btnNext = slider.querySelector('.btn-next');
+    let startX = 0, currentTranslate = 0, prevTranslate = 0, isDragging = false;
+
+    function setPosition() {
+        track.style.transform = `translateX(${currentTranslate}px)`;
+    }
+
+    function clampPosition() {
+        const maxTranslate = 0;
+        const minTranslate = -track.scrollWidth + slider.offsetWidth;
+        if (currentTranslate > maxTranslate) currentTranslate = maxTranslate;
+        if (currentTranslate < minTranslate) currentTranslate = minTranslate;
+    }
+
+    // --- SWIPE & DRAG HANDLERS ---
+    function start(e) {
+        isDragging = true;
+        startX = e.type.includes('mouse') ? e.clientX : e.touches[0].clientX;
+        track.style.cursor = 'grabbing';
+    }
+
+    function move(e) {
+        if (!isDragging) return;
+        const x = e.type.includes('mouse') ? e.clientX : e.touches[0].clientX;
+        currentTranslate = prevTranslate + x - startX;
+        clampPosition();
+        setPosition();
+    }
+
+    function end() {
+        isDragging = false;
+        prevTranslate = currentTranslate;
+        track.style.cursor = 'grab';
+    }
+
+    // --- BUTTONS ---
+    btnPrev?.addEventListener('click', () => {
+        currentTranslate += slider.offsetWidth;
+        clampPosition();
+        prevTranslate = currentTranslate;
+        setPosition();
+    });
+
+    btnNext?.addEventListener('click', () => {
+        currentTranslate -= slider.offsetWidth;
+        clampPosition();
+        prevTranslate = currentTranslate;
+        setPosition();
+    });
+
+    // --- EVENT LISTENERS ---
+    track.addEventListener('mousedown', start);
+    track.addEventListener('mousemove', move);
+    track.addEventListener('mouseup', end);
+    track.addEventListener('mouseleave', () => isDragging && end());
+
+    track.addEventListener('touchstart', start);
+    track.addEventListener('touchmove', move);
+    track.addEventListener('touchend', end);
+
+    // --- INITIAL STATE ---
+    track.style.cursor = 'grab';
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    initSliderSwipe('#slider');
+});
