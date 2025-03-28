@@ -5,20 +5,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Altura Verde - Servicios de Poda</title>
-    <link rel="stylesheet" href="styles.css"> <!-- Enlazamos el archivo de estilos -->
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://kit.fontawesome.com/a2e0a6f02c.js" crossorigin="anonymous"></script> <!-- Iconos FontAwesome -->
 </head>
 <body>
+
     <header>
         <h1>Altura Verde</h1>
         <p>Servicios Profesionales de Poda</p>
+        <div class="redes-sociales">
+            <a href="https://wa.me/541157504930" target="_blank"><i class="fab fa-whatsapp"></i></a>
+            <a href="https://www.instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
+            <a href="mailto:altura.verde.agm@gmail.com"><i class="fas fa-envelope"></i></a>
+        </div>
     </header>
 
     <nav>
         <ul>
             <li><a href="#servicios">Servicios</a></li>
+            <li><a href="#galeria">Galería</a></li>
             <li><a href="#contacto">Contacto</a></li>
             <li><a href="#sobre-nosotros">Sobre Nosotros</a></li>
-            <li><a href="#galeria">Galeria</a></li>
         </ul>
     </nav>
 
@@ -33,17 +40,61 @@
         </ul>
     </section>
 
+    <section id="galeria">
+        <h2>Galería</h2>
+        <div class="galeria">
+            <img src="https://via.placeholder.com/300x200" alt="Trabajo 1">
+            <img src="https://via.placeholder.com/300x200" alt="Trabajo 2">
+            <iframe src="https://www.youtube.com/embed/2tM8FCzSyVw" title="Video de poda" allowfullscreen></iframe>
+        </div>
+    </section>
+
     <section id="contacto">
         <h2>Contacto</h2>
-        <p>WhatsApp: 11-5750-4930</p>
-        <p>Correo: altura.verde.agm@gmail.com</p>
-        <p>Sitio web: <a href="https://alturaverde.github.io" target="_blank">alturaverde.github.io</a></p>
+        <form action="#" method="post">
+            <input type="text" name="nombre" placeholder="Tu Nombre" required>
+            <input type="email" name="email" placeholder="Tu Email" required>
+            <textarea name="mensaje" rows="5" placeholder="Tu Mensaje" required></textarea>
+            <button type="submit">Enviar</button>
+        </form>
+    </section>
+
+    <section id="sobre-nosotros">
+        <h2>Sobre Nosotros</h2>
+        <p>Somos una empresa familiar dedicada a la poda y mantenimiento de árboles, comprometidos con la seguridad, el cuidado ambiental y la estética urbana.</p>
     </section>
 
     <footer>
-        <p>&copy; 2025 Altura Verde. Todos los derechos reservados.</p>
+        <p>&copy; 2025 Altura Verde - Todos los derechos reservados</p>
     </footer>
 
-    <script src="scripts.js"></script> <!-- Enlazamos el archivo de JavaScript -->
+    <!-- Botón flotante de WhatsApp -->
+    <a href="https://wa.me/541157504930" class="whatsapp" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <script src="scripts.js"></script>
+<script>
+// Efecto fade-in al hacer scroll
+document.addEventListener('DOMContentLoaded', () => {
+    const sections = document.querySelectorAll('section');
+    const options = {
+        threshold: 0.1
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if(entry.isIntersecting){
+                entry.target.classList.add('visible');
+            }
+        });
+    }, options);
+
+    sections.forEach(section => {
+        section.classList.add('fade');
+        observer.observe(section);
+    });
+});
+</script>
 </body>
 </html>
