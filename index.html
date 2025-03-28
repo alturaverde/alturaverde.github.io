@@ -44,17 +44,55 @@
         </ul>
     </section>
 
-    <section id="galeria">
+    <section id="galeria" style="padding: 20px;">
     <h2>Galería</h2>
-    <div class="slider">
-        <div class="slides">
-            <div><img src="img/servicio1.jpg" alt="Poda de árboles"></div>
-            <div><img src="img/servicio2.jpg" alt="Tala controlada"></div>
-            <div><iframe src="https://www.youtube.com/embed/ID_DEL_VIDEO" frameborder="0" allowfullscreen></iframe></div>
-            <div><img src="img/servicio3.jpg" alt="Despeje de líneas"></div>
+
+    <!-- Slider Principal -->
+    <div class="slider-container" id="slider">
+
+        <div class="slider-track">
+
+            <div class="slider-item">
+                <img src="img/servicio1.jpg" alt="Poda de árboles">
+            </div>
+
+            <div class="slider-item">
+                <img src="img/servicio2.jpg" alt="Tala controlada">
+            </div>
+
+            <div class="slider-item">
+                <div class="video-container">
+                    <iframe src="https://www.youtube.com/embed/yZpZThPqA-w?si=HOMMnzi2BFvJV-pz" title="YouTube video player" frameborder="0" allowfullscreen></iframe>
+                </div>
+            </div>
+
+            <div class="slider-item">
+                <img src="img/servicio3.jpg" alt="Despeje de líneas">
+            </div>
+
         </div>
     </div>
+
+    <!-- Miniaturas de videos -->
+    <h3 style="margin-top:30px;">Más Videos</h3>
+    <div class="miniaturas">
+
+        <div class="video-container">
+            <iframe src="https://www.youtube.com/embed/yZpZThPqA-w?si=HOMMnzi2BFvJV-pz" title="Video 1" frameborder="0" allowfullscreen></iframe>
+        </div>
+
+        <!-- Aquí puedes ir agregando más videos -->
+        <!-- 
+        <div class="video-container">
+            <iframe src="https://www.youtube.com/embed/OTRO_VIDEO" title="Video 2" frameborder="0" allowfullscreen></iframe>
+        </div>
+        -->
+
+    </div>
+
 </section>
+
+
 
 
     <section id="contacto">
@@ -112,6 +150,28 @@ document.addEventListener('DOMContentLoaded', () => {
         observer.observe(section);
     });
 });
+</script>
+<script>
+    let slideIndex = 0;
+    const slides = document.querySelectorAll('.slider-item');
+
+    function showSlide(n) {
+        slides.forEach(slide => slide.style.display = 'none');
+        slides[n].style.display = 'block';
+    }
+
+    function nextSlide() {
+        slideIndex = (slideIndex + 1) % slides.length;
+        showSlide(slideIndex);
+    }
+
+    function prevSlide() {
+        slideIndex = (slideIndex - 1 + slides.length) % slides.length;
+        showSlide(slideIndex);
+    }
+
+    // Mostrar la primera slide al cargar
+    showSlide(slideIndex);
 </script>
 </body>
 </html>

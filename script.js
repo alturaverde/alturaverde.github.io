@@ -74,3 +74,59 @@ function validateEmail(email) {
     // Aquí podemos también añadir una animación para que sea más suave
     successMessage.classList.add('fade-in');
 });
+<script>
+    const sliderTrack = document.querySelector('.slider-track');
+    let startX = 0, currentTranslate = 0, prevTranslate = 0, animationID, isDragging = false;
+
+    function setPosition() {
+        sliderTrack.style.transform = `translateX(${currentTranslate}px)`;
+    }
+
+    function touchStart(e) {
+        isDragging = true;
+        startX = e.touches[0].clientX;
+    }
+
+    function touchMove(e) {
+        if (!isDragging) return;
+        const currentX = e.touches[0].clientX;
+        currentTranslate = prevTranslate + currentX - startX;
+        setPosition();
+    }
+
+    function touchEnd() {
+        isDragging = false;
+        const slideWidth = sliderTrack.offsetWidth / sliderTrack.children.length;
+        const moved = currentTranslate - prevTranslate;
+        if (moved < -50) {
+            nextSlide();
+        } else if (moved > 50) {
+            prevSlide();
+        } else {
+            currentTranslate = prevTranslate;
+            setPosition();
+        }
+    }
+
+    function nextSlide() {
+        const slideWidth = sliderTrack.offsetWidth / sliderTrack.children.length;
+        if (prevTranslate > -slideWidth * (sliderTrack.children.length - 1)) {
+            prevTranslate -= slideWidth;
+            currentTranslate = prevTranslate;
+            setPosition();
+        }
+    }
+
+    function prevSlide() {
+        const slideWidth = sliderTrack.offsetWidth / sliderTrack.children.length;
+        if (prevTranslate < 0) {
+            prevTranslate += slideWidth;
+            currentTranslate = prevTranslate;
+            setPosition();
+        }
+    }
+
+    sliderTrack.addEventListener('touchstart', touchStart);
+    sliderTrack.addEventListener('touchmove', touchMove);
+    sliderTrack.addEventListener('touchend', touchEnd);
+</script>
