@@ -18,7 +18,7 @@ header {
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    color: black; /* Mantienes el color blanco del texto */
+    color: #FF5DD3; /* Mantienes el color blanco del texto */
     text-align: center;
     padding: 2rem 1rem;
     position: relative;
