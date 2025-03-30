@@ -32,34 +32,33 @@ document.addEventListener("DOMContentLoaded", function () {
             modal.classList.add("modal");
             modal.innerHTML = `<div class="modal-content"><img src="${this.src}"/><span class="close">&times;</span></div>`;
             document.body.appendChild(modal);
-
+            
             modal.querySelector(".close").addEventListener("click", () => {
                 modal.remove();
             });
         });
     });
 });
-
 document.getElementById('contactForm').addEventListener('submit', function(event) {
-    const nombre = document.getElementById('nombre').value;
-    const email = document.getElementById('email').value;
-    const mensaje = document.getElementById('mensaje').value;
+const nombre = document.getElementById('nombre').value;
+const email = document.getElementById('email').value;
+const mensaje = document.getElementById('mensaje').value;
 
-    if (!nombre || !email || !mensaje) {
-        alert("Por favor, completa todos los campos.");
-        return;
-    }
+if (!nombre || !email || !mensaje) {
+    alert("Por favor, completa todos los campos.");
+    return;
+}
 
-    if (!validateEmail(email)) {
-        alert("Por favor, ingresa un correo válido.");
-        return;
-    }
+if (!validateEmail(email)) {
+    alert("Por favor, ingresa un correo válido.");
+    return;
+}
 
-    // Función para validar el formato del email
-    function validateEmail(email) {
-        const re = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
-        return re.test(email);
-    }
+// Función para validar el formato del email
+function validateEmail(email) {
+    const re = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+    return re.test(email);
+}
 
     event.preventDefault(); // Prevenir la acción predeterminada (no recargar página)
 
@@ -75,7 +74,124 @@ document.getElementById('contactForm').addEventListener('submit', function(event
     // Aquí podemos también añadir una animación para que sea más suave
     successMessage.classList.add('fade-in');
 });
+<script>
+    const sliderTrack = document.querySelector('.slider-track');
+    let startX = 0, currentTranslate = 0, prevTranslate = 0, animationID, isDragging = false;
 
+    function setPosition() {
+        sliderTrack.style.transform = `translateX(${currentTranslate}px)`;
+    }
+
+    function touchStart(e) {
+        isDragging = true;
+        startX = e.touches[0].clientX;
+    }
+
+    function touchMove(e) {
+        if (!isDragging) return;
+        const currentX = e.touches[0].clientX;
+        currentTranslate = prevTranslate + currentX - startX;
+        setPosition();
+    }
+
+    function touchEnd() {
+        isDragging = false;
+        const slideWidth = sliderTrack.offsetWidth / sliderTrack.children.length;
+        const moved = currentTranslate - prevTranslate;
+        if (moved < -50) {
+            nextSlide();
+        } else if (moved > 50) {
+            prevSlide();
+        } else {
+            currentTranslate = prevTranslate;
+            setPosition();
+        }
+    }
+
+    function nextSlide() {
+        const slideWidth = sliderTrack.offsetWidth / sliderTrack.children.length;
+        if (prevTranslate > -slideWidth * (sliderTrack.children.length - 1)) {
+            prevTranslate -= slideWidth;
+            currentTranslate = prevTranslate;
+            setPosition();
+        }
+    }
+
+    function prevSlide() {
+        const slideWidth = sliderTrack.offsetWidth / sliderTrack.children.length;
+        if (prevTranslate < 0) {
+            prevTranslate += slideWidth;
+            currentTranslate = prevTranslate;
+            setPosition();
+        }
+    }
+
+    sliderTrack.addEventListener('touchstart', touchStart);
+    sliderTrack.addEventListener('touchmove', touchMove);
+    sliderTrack.addEventListener('touchend', touchEnd);
+</script>
+function initSliderSwipe(sliderSelector) {
+    const sliderTrack = document.querySelector(`${sliderSelector} .slider-track`);
+    if (!sliderTrack) return;
+
+    let startX = 0, currentTranslate = 0, prevTranslate = 0, isDragging = false;
+
+    function setPosition() {
+        sliderTrack.style.transform = `translateX(${currentTranslate}px)`;
+    }
+
+    function touchStart(e) {
+        isDragging = true;
+        startX = e.touches[0].clientX;
+    }
+
+    function touchMove(e) {
+        if (!isDragging) return;
+        const currentX = e.touches[0].clientX;
+        currentTranslate = prevTranslate + currentX - startX;
+        setPosition();
+    }
+
+    function touchEnd() {
+        isDragging = false;
+        const slideWidth = sliderTrack.offsetWidth / sliderTrack.children.length;
+        const moved = currentTranslate - prevTranslate;
+        if (moved < -50) {
+            nextSlide();
+        } else if (moved > 50) {
+            prevSlide();
+        } else {
+            currentTranslate = prevTranslate;
+            setPosition();
+        }
+    }
+
+    function nextSlide() {
+        const slideWidth = sliderTrack.offsetWidth / sliderTrack.children.length;
+        if (prevTranslate > -slideWidth * (sliderTrack.children.length - 1)) {
+            prevTranslate -= slideWidth;
+            currentTranslate = prevTranslate;
+            setPosition();
+        }
+    }
+
+    function prevSlide() {
+        const slideWidth = sliderTrack.offsetWidth / sliderTrack.children.length;
+        if (prevTranslate < 0) {
+            prevTranslate += slideWidth;
+            currentTranslate = prevTranslate;
+            setPosition();
+        }
+    }
+
+    sliderTrack.addEventListener('touchstart', touchStart);
+    sliderTrack.addEventListener('touchmove', touchMove);
+    sliderTrack.addEventListener('touchend', touchEnd);
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    initSliderSwipe('#slider');  // <--- aquí indicás el ID del slider que quieras controlar
+});
 function initSliderSwipe(sliderSelector) {
     const slider = document.querySelector(sliderSelector);
     if (!slider) return;

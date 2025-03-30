@@ -4,55 +4,94 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Mi Página Web</title>
+    <meta name="description" content="Altura Verde ofrece servicios profesionales de poda, tala y mantenimiento de árboles en Buenos Aires.">
+    <meta name="keywords" content="poda, tala controlada, arbolado, poda de árboles, poda en altura, Buenos Aires">
+    <meta name="author" content="Altura Verde">
+    <title>Altura Verde - Servicios de Poda</title>
     <link rel="stylesheet" href="styles.css">
+    <script src="https://kit.fontawesome.com/a2e0a6f02c.js" crossorigin="anonymous" defer></script>
+    <script src="script.js" defer></script>
 </head>
 <body>
 
-    <!-- Menú de navegación -->
-    <nav>
-        <ul>
-            <li><a href="#servicios">Servicios</a></li>
-            <li><a href="#galeria">Galería</a></li>
-            <li><a href="#contacto">Contacto</a></li>
-        </ul>
-    </nav>
+<header>
+    <img src="img/logo.svg" alt="Logo de Altura Verde" style="width:80px; vertical-align:middle;">
+    <h1>Altura Verde</h1>
+    <p>Servicios Profesionales de Poda</p>
+    <div class="redes-sociales">
+        <a href="https://wa.me/541157504930" target="_blank" rel="noopener noreferrer"><i class="fab fa-whatsapp"></i></a>
+        <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram"></i></a>
+        <a href="mailto:altura.verde.agm@gmail.com"><i class="fas fa-envelope"></i></a>
+    </div>
+</header>
 
-    <!-- Sección de servicios -->
-    <section id="servicios">
-        <h2>Servicios</h2>
-        <p>Descripción de los servicios que ofrezco.</p>
-    </section>
+<nav role="navigation">
+    <ul>
+        <li><a href="#servicios">Servicios</a></li>
+        <li><a href="#galeria">Galería</a></li>
+        <li><a href="#contacto">Contacto</a></li>
+        <li><a href="#sobre-nosotros">Sobre Nosotros</a></li>
+    </ul>
+</nav>
 
-    <!-- Sección de galería -->
-    <section id="galeria" class="gallery">
-        <h2>Galería</h2>
-        <div class="slider" id="slider">
-            <div class="slider-track">
-                <img src="image1.jpg" alt="Imagen 1">
-                <img src="image2.jpg" alt="Imagen 2">
-                <img src="image3.jpg" alt="Imagen 3">
+<section id="servicios">
+    <h2>Servicios</h2>
+    <ul>
+        <li>Poda de formación y mantenimiento</li>
+        <li>Tala controlada</li>
+        <li>Despeje de líneas eléctricas</li>
+        <li>Extracción de árboles secos o peligrosos</li>
+        <li>Trituración y retiro de ramas</li>
+    </ul>
+</section>
+
+<section id="galeria">
+    <h2>Galería</h2>
+    <div class="slider-container">
+        <div class="slider-track">
+            <div class="slider-item"><img src="img/servicio1.webp" alt="Poda de árboles" loading="lazy"></div>
+            <div class="slider-item"><img src="img/servicio2.webp" alt="Tala controlada" loading="lazy"></div>
+            <div class="slider-item">
+                <div class="video-container">
+                    <iframe src="https://www.youtube.com/embed/yZpZThPqA-w" title="Poda en acción" frameborder="0" allowfullscreen></iframe>
+                </div>
             </div>
-            <button class="btn-prev">Prev</button>
-            <button class="btn-next">Next</button>
+            <div class="slider-item"><img src="img/servicio3.webp" alt="Despeje de líneas" loading="lazy"></div>
         </div>
-    </section>
+    </div>
+</section>
 
-    <!-- Sección de contacto -->
-    <section id="contacto">
-        <h2>Contacto</h2>
-        <form id="contactForm">
-            <label for="nombre">Nombre:</label>
-            <input type="text" id="nombre" name="nombre" required>
-            <label for="email">Email:</label>
-            <input type="email" id="email" name="email" required>
-            <label for="mensaje">Mensaje:</label>
-            <textarea id="mensaje" name="mensaje" required></textarea>
-            <button type="submit">Enviar</button>
-        </form>
-        <div id="successMessage" style="display:none;">Gracias por tu mensaje. Nos pondremos en contacto contigo pronto.</div>
-    </section>
+<section id="contacto">
+    <h2>Contacto</h2>
+    <form id="contactForm" action="https://formspree.io/f/mwplnlea" method="POST">
+        <label for="nombre">Nombre:</label>
+        <input type="text" id="nombre" name="nombre" required>
 
-    <script src="script.js"></script>
+        <label for="email">Correo electrónico:</label>
+        <input type="email" id="email" name="_replyto" required>
+
+        <label for="mensaje">Mensaje:</label>
+        <textarea id="mensaje" name="mensaje" rows="5" required></textarea>
+
+        <button type="submit" aria-label="Enviar formulario">Enviar mensaje</button>
+    </form>
+    <div id="successMessage" style="display: none;">
+        <p>¡Gracias! Tu mensaje ha sido enviado correctamente.</p>
+    </div>
+</section>
+
+<section id="sobre-nosotros">
+    <h2>Sobre Nosotros</h2>
+    <p>Somos una empresa familiar dedicada a la poda y mantenimiento de árboles, comprometidos con la seguridad, el cuidado ambiental y la estética urbana.</p>
+</section>
+
+<footer>
+    <p>&copy; 2025 Altura Verde - Todos los derechos reservados</p>
+</footer>
+
+<a href="https://wa.me/541157504930" class="whatsapp" target="_blank" rel="noopener noreferrer">
+    <i class="fab fa-whatsapp"></i>
+</a>
+
 </body>
 </html>
