@@ -14,7 +14,7 @@ body {
 
 /* Header */
 header {
-    background-image: url('/home/agmingenieria/AlturaVerde/alturaverde.github.io/img/imagen.jpg'); /* Cambia esta ruta por la ubicación de tu imagen */
+    background-image: url('img/imagen.jpg'); /* Cambia esta ruta por la ubicación de tu imagen */
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
