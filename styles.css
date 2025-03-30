@@ -14,8 +14,11 @@ body {
 
 /* Header */
 header {
-    background: #2e7d32;
-    color: white;
+    background-image: url('/home/agmingenieria/AlturaVerde/alturaverde.github.io/img/imagen.jpg'); /* Cambia esta ruta por la ubicación de tu imagen */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    color: white; /* Mantienes el color blanco del texto */
     text-align: center;
     padding: 2rem 1rem;
     position: relative;
@@ -29,6 +32,7 @@ header h1 {
 header p {
     font-size: 1.2rem;
 }
+    
 
 .redes-sociales {
     margin-top: 1rem;
