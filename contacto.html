@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contacto - Altura Verde</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <header>
+        <img src="img/logo.svg" alt="Logo de Altura Verde" style="width:80px; vertical-align:middle;">
+        <h1>Altura Verde</h1>
+        <p>Servicios Profesionales de Poda</p>
+        <div class="redes-sociales">
+            <a href="https://wa.me/541157504930" target="_blank" rel="noopener noreferrer"><i class="fab fa-whatsapp"></i></a>
+            <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram"></i></a>
+            <a href="mailto:altura.verde.agm@gmail.com"><i class="fas fa-envelope"></i></a>
+        </div>
+    </header>
+    
+    <nav>
+        <ul>
+            <li><a href="index.html">Inicio</a></li>
+            <li><a href="servicios.html">Servicios</a></li>
+            <li><a href="galeria.html">Galería</a></li>
+            <li><a href="contacto.html">Contacto</a></li>
+            <li><a href="sobre-nosotros.html">Sobre Nosotros</a></li>
+        </ul>
+    </nav>
+    
+    <section id="contacto">
+        <h2>Contacto</h2>
+        <form id="contactForm" action="https://formspree.io/f/mwplnlea" method="POST">
+            <label for="nombre">Nombre:</label>
+            <input type="text" id="nombre" name="nombre" required>
+
+            <label for="email">Correo electrónico:</label>
+            <input type="email" id="email" name="_replyto" required>
+
+            <label for="mensaje">Mensaje:</label>
+            <textarea id="mensaje" name="mensaje" rows="5" required></textarea>
+
+            <button type="submit" aria-label="Enviar formulario">Enviar mensaje</button>
+        </form>
+        <div id="successMessage" style="display: none;">
+            <p>¡Gracias! Tu mensaje ha sido enviado correctamente.</p>
+        </div>
+    </section>
+    
+    <a href="https://wa.me/541157504930" class="whatsapp" target="_blank" rel="noopener noreferrer">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+    
+    <footer>
+        <p>&copy; 2025 Altura Verde</p>
+    </footer>
+</body>
+</html>
