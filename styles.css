@@ -448,3 +448,18 @@ button:hover {
     border-radius: 10px;
     overflow: hidden;
 }
+.slider-track {
+    display: flex;
+    flex-wrap: wrap; /* Asegura que los elementos se acomoden */
+    gap: 10px;
+}
+
+.slider-item {
+    flex: 1 1 30%; /* Ajusta el tamaño de cada item */
+    text-align: center;
+}
+
+.slider-item img {
+    max-width: 100%;
+    height: auto;
+}
