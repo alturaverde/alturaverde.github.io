@@ -4,12 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contacto - Altura Verde</title>
-    <link rel="stylesheet" href="styles.css">
+    <meta name="description" content="Contactanos para servicios profesionales de poda y jardinería en Altura Verde. Atención personalizada y rápida.">
+    <meta name="keywords" content="poda, árboles, contacto, jardinería, altura verde, servicios">
+    <link rel="stylesheet" href="../styles.css">
     <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 </head>
 <body>
     <header>
-        <img src="img/logo.svg" alt="Logo de Altura Verde" style="width:80px; vertical-align:middle;">
+        <img src="../img/logo.svg" alt="Logo de Altura Verde" style="width:80px; vertical-align:middle;">
         <h1>Altura Verde</h1>
         <p>Servicios Profesionales de Poda</p>
         <div class="redes-sociales">
@@ -21,11 +23,11 @@
     
     <nav>
         <ul>
-            <li><a href="/">Inicio</a></li>
-            <li><a href="/servicios/">Servicios</a></li>
-            <li><a href="/galeria/">Galería</a></li>
-            <li><a href="/contacto/">Contacto</a></li>
-            <li><a href="/sobre-nosotros/">Sobre Nosotros</a></li>
+            <li><a href="../">Inicio</a></li>
+            <li><a href="../servicios/">Servicios</a></li>
+            <li><a href="../galeria/">Galería</a></li>
+            <li><a href="../contacto/">Contacto</a></li>
+            <li><a href="../sobre-nosotros/">Sobre Nosotros</a></li>
         </ul>
     </nav>
     
@@ -33,13 +35,13 @@
         <h2>Contacto</h2>
         <form id="contactForm" action="https://formspree.io/f/mwplnlea" method="POST">
             <label for="nombre">Nombre:</label>
-            <input type="text" id="nombre" name="nombre" required>
+            <input type="text" id="nombre" name="nombre" required autocomplete="name" aria-label="Nombre completo">
 
             <label for="email">Correo electrónico:</label>
-            <input type="email" id="email" name="_replyto" required>
+            <input type="email" id="email" name="_replyto" required autocomplete="email" aria-label="Correo electrónico">
 
             <label for="mensaje">Mensaje:</label>
-            <textarea id="mensaje" name="mensaje" rows="5" required></textarea>
+            <textarea id="mensaje" name="mensaje" rows="5" required aria-label="Escriba su mensaje aquí"></textarea>
 
             <button type="submit" aria-label="Enviar formulario">Enviar mensaje</button>
         </form>
@@ -55,5 +57,7 @@
     <footer>
         <p>&copy; 2025 Altura Verde</p>
     </footer>
+
+    <script src="../script.js" defer></script>
 </body>
 </html>
